@@ -1,0 +1,35 @@
+{
+    "StorageforTeams":[
+        {
+            "PlaceInStorage": 0,
+            "HasData": false,
+            "Teamname": null       
+         },
+
+
+
+
+
+         {
+            "PlaceInStorage": 1,
+            "HasData": false,
+            "Teamname": null
+         },
+
+
+
+
+
+         {
+            "PlaceInStorage": 2,
+            "HasData": false,
+            "Teamname": null
+         }
+
+
+
+
+
+
+    ]
+}
