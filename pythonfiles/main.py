@@ -17,8 +17,12 @@ from time import *
 
 
 #load the json files into the code
-with open("databaseforteaminfos.json", "r") as databaseforteaminfosfile:
-    databaseforteaminfos = json.load(databaseforteaminfosfile)
+#here the 
+with open("GamescoreDB.json", "r") as databaseforteaminfosfile:
+    GamescoreDB = json.load(databaseforteaminfosfile)
+    
+with open("DriversDB.json", "r") as DriversDBfile:
+    DriversDB = json.load(DriversDBfile)
 
 
 
@@ -33,11 +37,21 @@ def makespace():
 
 
 #this is the function that resets json data for the team info. uses the global gamestoragenumber variabel
-def resetjsonteaminfo(storagenumber):
-    return 0
+def resetjsongamescore(storagenumber):
+    with open("GamescoreDB.json", "r") as databaseforteaminfosfile:
+        GamescoreDB = json.load(databaseforteaminfosfile)
+    
     #first we need to change the data back to zero
-    #berfore we have to overwrite the json data with json.dump()
-
+    GamescoreDB["StorageforTeams"][storagenumber]["HasData"] = False
+    
+    #now we have to overwrite the json data with json.dump()
+    with open("GamescoreDB.json", "w") as file:
+        json.dump(GamescoreDB, file, indent=4)
+        
+   
+    #goes back to the Choose Screen
+    game_choose_screen()
+    
 
 
 
@@ -54,7 +68,7 @@ def hub_screen(storagenumber):
     print("                       | |  __/ (_| | | | | | | | |  | | |_| | |_) |")
     print("                       |_|\___|\__,_|_| |_| |_| |_|  |_|\__,_|_.__/ ")
     print("--------------------------------------------------------------------------------------------------")
-    print("Welcome to the", databaseforteaminfos["StorageforTeams"][storagenumber]["Teamname"], "Headquarter")
+    print("Welcome to the", GamescoreDB["StorageforTeams"][storagenumber]["Teamname"], "Headquarter")
     print()
     print()
     print()
@@ -111,7 +125,7 @@ def game_choose_screen():
         #looks for the user input
         user_command = str(input())
         if user_command == "play":
-            can_be_played = databaseforteaminfos["StorageforTeams"][storagenumber]["HasData"]
+            can_be_played = GamescoreDB["StorageforTeams"][storagenumber]["HasData"]
             if can_be_played == True:
                 hub_screen(storagenumber)
                 
@@ -123,11 +137,11 @@ def game_choose_screen():
                 
                 
         elif user_command == "delete":
-            resetjsonteaminfo(storagenumber)
+            resetjsongamescore(storagenumber)
             
             
         elif user_command == "create":
-            cant_be_created = databaseforteaminfos["StorageforTeams"][storagenumber]["HasData"]
+            cant_be_created = GamescoreDB["StorageforTeams"][storagenumber]["HasData"]
             if cant_be_created == True:
                 print("Sry there is data inside this Gamescore. Delete it first to create a new game. ")
                 sleep(4)
@@ -150,22 +164,22 @@ def game_choose_screen():
     
     
     #first we have to look if there is already some data in the storages (HasData Atribute in json file type boolean in file databaseforteaminfos.json)
-    if databaseforteaminfos["StorageforTeams"][0]["HasData"] == False: #Here we look into the first storage
+    if GamescoreDB["StorageforTeams"][0]["HasData"] == False: #Here we look into the first storage
         StorageOne = "Empty Space"
     else:
-        StorageOne= databaseforteaminfos["StorageforTeams"][0]["Teamname"]
+        StorageOne= GamescoreDB["StorageforTeams"][0]["Teamname"]
     
     
-    if databaseforteaminfos["StorageforTeams"][1]["HasData"] == False: #Here we look into the second storage
+    if GamescoreDB["StorageforTeams"][1]["HasData"] == False: #Here we look into the second storage
         StorageTwo = "Empty Space"
     else:
-        StorageTwo= databaseforteaminfos["StorageforTeams"][1]["Teamname"]
+        StorageTwo= GamescoreDB["StorageforTeams"][1]["Teamname"]
     
     
-    if databaseforteaminfos["StorageforTeams"][2]["HasData"] == False: #Here we look into the third storage
+    if GamescoreDB["StorageforTeams"][2]["HasData"] == False: #Here we look into the third storage
         StorageThree = "Empty Space"
     else:
-        StorageThree= databaseforteaminfos["StorageforTeams"][2]["Teamname"]
+        StorageThree= GamescoreDB["StorageforTeams"][2]["Teamname"]
         
     
     
