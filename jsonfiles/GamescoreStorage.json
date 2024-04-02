@@ -1,0 +1,24 @@
+{
+    "StorageforTeams": [
+        {
+            "PlaceInStorage": 0,
+            "HasData": false,
+            "Teamname": null,
+            "DriverOne:": null,
+            "DriverTwo:": null,
+            "GpsDriven": 0,
+            "GPsWon": 0,
+            "ChampionshipsDriven": 0,
+            "ChampionshipsWon": 0,
+            "CarLevel": 0
+        },
+        {
+            "PlaceInStorage": 1,
+            "HasData": false
+        },
+        {
+            "PlaceInStorage": 2,
+            "HasData": false
+        }
+    ]
+}
