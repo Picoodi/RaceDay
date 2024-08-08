@@ -16,6 +16,7 @@ from time import *
 
 
 
+
 #load the json files into the code
 #here the 
 with open("GamescoreDB.json", "r") as databaseforteaminfosfile:
@@ -23,6 +24,8 @@ with open("GamescoreDB.json", "r") as databaseforteaminfosfile:
     
 with open("DriversDB.json", "r") as DriversDBfile:
     DriversDB = json.load(DriversDBfile)
+
+
 
 
 
